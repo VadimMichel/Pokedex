@@ -45,5 +45,15 @@ function renderPokemonCard(){
 
     for (let indexpokemonArray = 0; indexpokemonArray < pokemonArray.length; indexpokemonArray++) {
         pokemonCardContant.innerHTML += getPokemonCardTemplate(indexpokemonArray);
+        renderPokemonTypeInCardFooter(indexpokemonArray);
+    }
+}
+
+async function renderPokemonTypeInCardFooter(indexpokemonArray){
+    let pokemonCardFooter = document.getElementById(`pokemonContainerFooter${indexpokemonArray}`);
+    pokemonCardFooter.innerHTML = "";
+
+    for (let indexPokemonContainerFooter = 0; indexPokemonContainerFooter < pokemonArray[indexpokemonArray].types.length; indexPokemonContainerFooter++) {
+        pokemonCardFooter.innerHTML += getPokemonTypeTemplate(indexpokemonArray, indexPokemonContainerFooter);
     }
 }
