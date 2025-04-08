@@ -23,19 +23,22 @@ header{
     align-items: center;
     justify-content: space-between;
     padding-bottom: 24px;
-    border: 3px solid rgb(164,136,98);
-    color: rgb(172, 113, 31);
+    border: 3px solid grey;
+    box-shadow: 8px 8px 16px grey;
+    font-size: 20px;
     padding: 8px;
 }
 
-.pokemon-container img{
+.img-wraper img{
     width: 180px;
     height: 180px;
+    
 }
 
-.pokemon-container img:hover{
-    width: 196px;
-    height: 196px;
+.img-wraper img:hover{
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+    cursor: pointer;
 }
 
 #main-content{
