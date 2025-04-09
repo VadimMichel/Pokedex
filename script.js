@@ -57,3 +57,29 @@ async function renderPokemonTypeInCardFooter(indexpokemonArray){
         pokemonCardFooter.innerHTML += getPokemonTypeTemplate(indexpokemonArray, indexPokemonContainerFooter);
     }
 }
+
+function displayMorePokemon(){
+    firstPokemon = firstPokemon +20;
+    lastPokemon = lastPokemon +20;
+    pushAPIDatainLocalArray()
+}
+
+function openOverlayCard(indexpokemonArray){
+    let overlayRef = document.getElementById('overlay') 
+    overlayRef.classList.remove("d_none");
+    overlayRef.innerHTML = "";
+    overlayRef.innerHTML = getOverlayPokemonCardTemplate(indexpokemonArray);
+}
+
+function closeWindow(){
+    document.getElementById('overlay').classList.add("d_none");
+}
+
+function eventBubeling(event){
+    event.stopPropagation();
+}
+
+function firstLatterUpperCase(string){
+    capitalizedType = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    return capitalizedType
+}

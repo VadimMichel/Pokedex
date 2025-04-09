@@ -8,8 +8,8 @@ header{
     justify-content: center;
     padding-top: 32px;
     padding-bottom: 32px;
-    border-bottom: 3px solid grey;
-    box-shadow: 0px 2px 10px grey;
+    border-bottom: 3px solid rgb(66,78,90);
+    box-shadow: 0px 2px 10px rgb(66,78,90);
 }
 
 .pokemon-container{
@@ -23,10 +23,11 @@ header{
     align-items: center;
     justify-content: space-between;
     padding-bottom: 24px;
-    border: 3px solid grey;
-    box-shadow: 8px 8px 16px grey;
+    border: 3px solid rgb(66,78,90);
+    box-shadow: 8px 8px 16px rgb(66,78,90);
     font-size: 20px;
     padding: 8px;
+    color: #FFFF;
 }
 
 .img-wraper img{
@@ -35,7 +36,7 @@ header{
     
 }
 
-.img-wraper img:hover{
+.scale img:hover{
     transform: scale(1.1);
     transition-duration: 0.5s;
     cursor: pointer;
@@ -58,4 +59,53 @@ header{
     width: 110px;
     border-radius: 8px;
     border: 3px solid rgb(66,78,90);
+}
+
+.button-wrapper img{
+    width: 80px;
+}
+
+.button-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 3px solid rgb(66,78,90);
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.overlay-pokemon-card-style{
+    width: 328px;
+    height: 512px;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    justify-content: space-between;
+    padding-top: 8px;
+    border: 3px solid rgb(66,78,90);
+}
+
+.overlay-pokemon-detail{
+    height: 320px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: white;
+    color: rgb(66,78,90);
+    padding-top: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
 }

@@ -21,6 +21,12 @@ a{
     z-index: 2;
 }
 
-.d_none_allways{
+.d_none{
     display: none;
+}
+
+.d-flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
