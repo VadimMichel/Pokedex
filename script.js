@@ -45,12 +45,12 @@ function renderPokemonCard(){
 
     for (let indexpokemonArray = 0; indexpokemonArray < pokemonArray.length; indexpokemonArray++) {
         pokemonCardContant.innerHTML += getPokemonCardTemplate(indexpokemonArray);
-        renderPokemonTypeInCardFooter(indexpokemonArray);
+        renderPokemonTypeInCardFooter(indexpokemonArray, "pokemonContainerFooter");
     }
 }
 
-async function renderPokemonTypeInCardFooter(indexpokemonArray){
-    let pokemonCardFooter = document.getElementById(`pokemonContainerFooter${indexpokemonArray}`);
+async function renderPokemonTypeInCardFooter(indexpokemonArray, id){
+    let pokemonCardFooter = document.getElementById(`${id}${indexpokemonArray}`);
     pokemonCardFooter.innerHTML = "";
 
     for (let indexPokemonContainerFooter = 0; indexPokemonContainerFooter < pokemonArray[indexpokemonArray].types.length; indexPokemonContainerFooter++) {
@@ -69,6 +69,8 @@ function openOverlayCard(indexpokemonArray){
     overlayRef.classList.remove("d_none");
     overlayRef.innerHTML = "";
     overlayRef.innerHTML = getOverlayPokemonCardTemplate(indexpokemonArray);
+    renderPokemonTypeInCardFooter(indexpokemonArray, "overlayPokemonContainerFooter");
+    renderOverlayPokemonCardBaseStatst(indexpokemonArray);
 }
 
 function closeWindow(){
@@ -82,4 +84,31 @@ function eventBubeling(event){
 function firstLatterUpperCase(string){
     capitalizedType = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     return capitalizedType
+}
+
+function renderOverlayPokemonCardBaseStatst(indexpokemonArray){
+    let pokemonCardDetailContentRef = document.getElementById(`overlayPokemonDetailContent${indexpokemonArray}`)
+    pokemonCardDetailContentRef.innerHTML = "";
+    let array = pokemonArray[indexpokemonArray].stats;
+
+    
+    for (let indexoverlayPokemonCardBaseStatst = 0; indexoverlayPokemonCardBaseStatst < array.length; indexoverlayPokemonCardBaseStatst++) {
+        pokemonCardDetailContentRef.innerHTML +=`
+            <tr>
+                <td>${firstLatterUpperCase(pokemonArray[indexpokemonArray].stats[indexoverlayPokemonCardBaseStatst].stat.name)} :</td><td>${pokemonArray[indexpokemonArray].stats[indexoverlayPokemonCardBaseStatst].base_stat}</td>
+            </tr>
+            `
+    }
+    
+}
+
+function renderOverlayPokemonCardAbility(indexpokemonArray){
+    let pokemonCardDetailContentRef = document.getElementById(`overlayPokemonDetailContent${indexpokemonArray}`);
+    pokemonCardDetailContentRef.innerHTML = "";
+
+    for (let indexoverlayPokemonCardAbility = 0; indexoverlayPokemonCardAbility < pokemonArray[indexpokemonArray].abilities.length; indexoverlayPokemonCardAbility++) {
+        pokemonCardDetailContentRef.innerHTML += `
+            <tr><td>${pokemonArray[indexpokemonArray].abilities[indexoverlayPokemonCardAbility].ability.name}</td></tr>
+        `
+    }
 }

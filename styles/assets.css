@@ -106,6 +106,40 @@ button:hover{
     padding-top: 40px;
     padding-left: 16px;
     padding-right: 16px;
+}
+
+.overllay-card-header{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.img-wraper-overlay img{
+    width: 120px;
+    height: 120px;
+}
+
+.overlay-pokemon-navbar-wrapper{
+    width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.overlay-pokemon-navbar-wrapper span:hover{
+    cursor: pointer;
+}
+
+.pokemon-overlay-detail-style{
+    border-top: 2px solid rgb(66,78,90);
+    width: 100%;
+    padding-top: 16px;
+    min-height: 160px;
+}
+
+.overlay-card-fotter-wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
 }
