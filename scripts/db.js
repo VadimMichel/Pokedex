@@ -23,4 +23,4 @@ let pokemonTypeImageArray = [
 
 let firstPokemon = 1;
 
-let lastPokemon = 21;
+let lastPokemon = 20;

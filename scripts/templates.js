@@ -32,7 +32,7 @@ function getOverlayPokemonCardTemplate(indexpokemonArray){
             <div class="overlay-pokemon-detail m-30">
                 <div class="overlay-pokemon-navbar-wrapper"><span onclick="renderOverlayPokemonCardBaseStatst(${indexpokemonArray})">Base Stats</span><span onclick="renderOverlayPokemonCardAbility(${indexpokemonArray})">Ability</span></div>
                 <table class="pokemon-overlay-detail-style" id="overlayPokemonDetailContent${indexpokemonArray}"></table>
-                <div class="overlay-card-fotter-wrapper scale"><img class="w-h-24 " src="./assets/ico/square-caret-left-solid.svg" alt=""><img class="w-h-24 scale" src="./assets/ico/square-caret-right-solid.svg" alt=""></div>
+                <div class="overlay-card-fotter-wrapper scale"><img onclick="openOverlayCard(${indexpokemonArray -1})" class="w-h-24 " src="./assets/ico/square-caret-left-solid.svg" alt=""><img onclick="openOverlayCard(${indexpokemonArray +1})" class="w-h-24 scale" src="./assets/ico/square-caret-right-solid.svg" alt=""></div>
             </div>
         </div>
     `

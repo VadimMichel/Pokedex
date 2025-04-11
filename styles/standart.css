@@ -22,7 +22,7 @@ a{
 }
 
 .d_none{
-    display: none;
+    display: none !important;
 }
 
 .d-flex-center{

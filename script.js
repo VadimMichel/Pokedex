@@ -2,20 +2,6 @@ function init(){
     pushAPIDatainLocalArray();
 }
 
-function getPromise() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            console.log('1');
-            if(promError){
-                reject();   
-            }else{
-                resolve();     
-            }
-        }, 100);     
-
-    });
-}
-
 async function usePromiseNew() {
     try{   
         await getPromise();  
@@ -31,11 +17,14 @@ async function fetchDataJson(url){
 }
 
 async function pushAPIDatainLocalArray(){
+    let loaderContent = document.getElementById("loader");
+    loaderContent.classList.remove("d_none")
     
-    for (let APIDataIndex = firstPokemon; APIDataIndex < lastPokemon; APIDataIndex++) {
+    for (let APIDataIndex = firstPokemon; APIDataIndex <= lastPokemon; APIDataIndex++) {
         let data = await fetchDataJson(`https://pokeapi.co/api/v2/pokemon/${APIDataIndex}`);
         pokemonArray.push(data);
     }
+    loaderContent.classList.add("d_none")
     renderPokemonCard();
 }
 
@@ -59,15 +48,31 @@ async function renderPokemonTypeInCardFooter(indexpokemonArray, id){
 }
 
 function displayMorePokemon(){
-    firstPokemon = firstPokemon +20;
-    lastPokemon = lastPokemon +20;
-    pushAPIDatainLocalArray()
+    let morePokemonButton = document.getElementById("morePokemonButton");
+
+    if(firstPokemon < 102){
+        firstPokemon = firstPokemon +20;
+        lastPokemon = lastPokemon +20; 
+        pushAPIDatainLocalArray();
+    }else if(firstPokemon < 122){
+        firstPokemon = firstPokemon +20;
+        lastPokemon = firstPokemon +10; 
+        pushAPIDatainLocalArray();
+        morePokemonButton.classList.add("d_none");
+    }
 }
 
 function openOverlayCard(indexpokemonArray){
     let overlayRef = document.getElementById('overlay') 
     overlayRef.classList.remove("d_none");
     overlayRef.innerHTML = "";
+   
+    if(indexpokemonArray > pokemonArray.length - 1){
+        indexpokemonArray = 0;
+    }else if(indexpokemonArray < 0){
+        indexpokemonArray = pokemonArray.length - 1;
+    }
+
     overlayRef.innerHTML = getOverlayPokemonCardTemplate(indexpokemonArray);
     renderPokemonTypeInCardFooter(indexpokemonArray, "overlayPokemonContainerFooter");
     renderOverlayPokemonCardBaseStatst(indexpokemonArray);
