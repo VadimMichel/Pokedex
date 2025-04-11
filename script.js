@@ -117,3 +117,10 @@ function renderOverlayPokemonCardAbility(indexpokemonArray){
         `
     }
 }
+
+async function serchPokemon(){
+    let serchObjekt = document.getElementById("inputField").value.toLowerCase();
+    let index = pokemonArray.findIndex(p => p.name === serchObjekt);
+    openOverlayCard(index);
+    document.getElementById("inputField").value = "";
+}
