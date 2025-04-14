@@ -11,9 +11,13 @@ async function usePromiseNew() {
 }
 
 async function fetchDataJson(url){
-    let response = await fetch(url);
-    let responseAsJson = await response.json();
-    return responseAsJson
+    try{
+        let response = await fetch(url);
+        let responseAsJson = await response.json();
+        return responseAsJson;
+    } catch{
+        alert("Something went wrong. Please reload.")
+    }
 }
 
 async function pushAPIDatainLocalArray(){
@@ -24,7 +28,7 @@ async function pushAPIDatainLocalArray(){
         let data = await fetchDataJson(`https://pokeapi.co/api/v2/pokemon/${APIDataIndex}`);
         pokemonArray.push(data);
     }
-    loaderContent.classList.add("d_none")
+    loaderContent.classList.add("d_none");
     renderPokemonCard();
 }
 
@@ -63,9 +67,11 @@ function displayMorePokemon(){
 }
 
 function openOverlayCard(indexpokemonArray){
-    let overlayRef = document.getElementById('overlay') 
+    let overlayRef = document.getElementById('overlay')
+    let mainContentRef = document.getElementById("fullContent");
     overlayRef.classList.remove("d_none");
     overlayRef.innerHTML = "";
+    mainContentRef.classList.add("no-scroll-bar");
    
     if(indexpokemonArray > pokemonArray.length - 1){
         indexpokemonArray = 0;
@@ -80,6 +86,8 @@ function openOverlayCard(indexpokemonArray){
 
 function closeWindow(){
     document.getElementById('overlay').classList.add("d_none");
+    let mainContentRef = document.getElementById("fullContent");
+    mainContentRef.classList.remove("no-scroll-bar");
 }
 
 function eventBubeling(event){
@@ -88,7 +96,7 @@ function eventBubeling(event){
 
 function firstLatterUpperCase(string){
     capitalizedType = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-    return capitalizedType
+    return capitalizedType;
 }
 
 function renderOverlayPokemonCardBaseStatst(indexpokemonArray){
@@ -102,9 +110,8 @@ function renderOverlayPokemonCardBaseStatst(indexpokemonArray){
             <tr>
                 <td>${firstLatterUpperCase(pokemonArray[indexpokemonArray].stats[indexoverlayPokemonCardBaseStatst].stat.name)} :</td><td>${pokemonArray[indexpokemonArray].stats[indexoverlayPokemonCardBaseStatst].base_stat}</td>
             </tr>
-            `
+        `;
     }
-    
 }
 
 function renderOverlayPokemonCardAbility(indexpokemonArray){
@@ -114,13 +121,25 @@ function renderOverlayPokemonCardAbility(indexpokemonArray){
     for (let indexoverlayPokemonCardAbility = 0; indexoverlayPokemonCardAbility < pokemonArray[indexpokemonArray].abilities.length; indexoverlayPokemonCardAbility++) {
         pokemonCardDetailContentRef.innerHTML += `
             <tr><td>${pokemonArray[indexpokemonArray].abilities[indexoverlayPokemonCardAbility].ability.name}</td></tr>
-        `
+        `;
     }
 }
 
 async function serchPokemon(){
     let serchObjekt = document.getElementById("inputField").value.toLowerCase();
     let index = pokemonArray.findIndex(p => p.name === serchObjekt);
-    openOverlayCard(index);
-    document.getElementById("inputField").value = "";
+    let alertText = document.getElementById("search-fail-text");
+    let alertTextPlaceHolder = document.getElementById("placeHolder");
+
+    if(serchObjekt.length > 2){
+        if(index != -1){
+            openOverlayCard(index);
+            document.getElementById("inputField").value = "";
+            alertTextPlaceHolder.classList.remove("d_none");
+            alertText.classList.add("d_none");
+        }else{
+            alertTextPlaceHolder.classList.add("d_none");
+            alertText.classList.remove("d_none"); 
+        }
+    }
 }

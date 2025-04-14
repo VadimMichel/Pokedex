@@ -6,10 +6,37 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 24px;
     padding-top: 32px;
     padding-bottom: 32px;
     border-bottom: 3px solid rgb(66,78,90);
     box-shadow: 0px 2px 10px rgb(66,78,90);
+    width: 100%;
+}
+
+footer{
+    height: 200px;
+    border-top: 3px solid rgb(66,78,90);
+    box-shadow: 0px -2px 10px rgb(66,78,90);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a{
+    color: rgb(66,78,90);
+}
+
+footer a:hover{
+    text-decoration: underline;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pokemon-container{
@@ -45,6 +72,9 @@ header{
 #main-content{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    min-height: calc(100vh - 536px);
+    max-width: 1440px;
 }
 
 .pokemon-container-header-footer{
@@ -61,28 +91,35 @@ header{
     border: 3px solid rgb(66,78,90);
 }
 
-.button-wrapper img{
+.button img{
     width: 80px;
 }
 
 .button-wrapper{
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.button-down{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    padding: 8px;
-    border-radius: 8px;
-    border: 3px solid rgb(66,78,90);
-}
-
-button:hover{
+.button {
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    background-color: rgb(77,82,90);
+    color: #eee;
+    border-radius: 7px;
+    font-weight: 600;
     cursor: pointer;
-}
+    transition: all 0.25s ease-out;
+  }
+  
+  .button:hover {
+    transform: translateY(-3px);
+  }
+  
+  .button-span {
+    color: #aaa;
+  }
 
 .overlay-pokemon-card-style{
     width: 328px;
@@ -95,6 +132,8 @@ button:hover{
     justify-content: space-between;
     padding-top: 8px;
     border: 3px solid rgb(66,78,90);
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .overlay-pokemon-detail{
@@ -174,3 +213,20 @@ button:hover{
     transform: rotate(360deg);
   }
 } 
+
+.button-wrapper input{
+    margin-right: 16px;
+    background-color: rgb(218,223,232);
+    border: 2px solid rgb(66,78,90);
+    border-radius: 8px;
+    padding-inline-start: 16px;
+}
+
+#placeHolder{
+    height: 19px;
+}
+
+#morePokemonButton{
+    padding-bottom: 32px;
+    padding-top: 24px;
+}

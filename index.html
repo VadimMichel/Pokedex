@@ -12,21 +12,26 @@
     <script src="./script.js"></script>
     <script src="./scripts/db.js"></script>
     <script src="./scripts/templates.js"></script>
+    <link rel="shortcut icon" href="./assets/ico/favicon.ico" type="image/x-icon">
 </head>
-<body onload="init()">
+<body id="fullContent" onload="init()">
     <header>
         <img src="./assets/img/International_Pokémon_logo.svg.png" alt="International_Pokémon_logo">
-        <form onsubmit="serchPokemon(); return false;" >
-            <input type="text" id="inputField" />
-            <button>Senden</button>
-          </form>
+        <form id="searchInputForm" class="button-wrapper m-bot-18" onsubmit="serchPokemon(); return false;" >
+            <input type="text" id="inputField" placeholder="Enter your Pokémon"/>
+            <button class="button">search</button></button>
+        </form>
+        <p id="search-fail-text" class="d_none">Pokémon not found, try again.</p>
+        <p id="placeHolder"></p>
     </header>
     <div class="overlay-style d_none" id="loader"><div  class="loader"></div></div>
     <div onclick="closeWindow()" id="overlay" class="overlay-style d_none">
     </div>
     <section id="main-content">
     </section>
-    <div id="morePokemonButton" class="button-wrapper"><button class="button-down" onclick="displayMorePokemon()">more <img src="./assets/img/International_Pokémon_logo.svg.png"></button></div>
-    <footer></footer>
+    <div id="morePokemonButton" class="button-wrapper"><button class="button" onclick="displayMorePokemon()">Load more Pokémon</button></div>
+    <footer>
+        <span>Data from: <a href="https://pokeapi.co/" target="_blank">https://pokeapi.co/</a></span>
+    </footer>
 </body>
 </html>
